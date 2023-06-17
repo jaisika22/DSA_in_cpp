@@ -1,1 +1,2 @@
-# DSA_in_c-
+# DSA_in_c++
+Studying dsa
