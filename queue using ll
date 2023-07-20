@@ -1,0 +1,59 @@
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int data) {
+        this->data = data;
+        this->next = nullptr;
+    }
+};
+
+class Queue {
+private:
+    Node* frontNode;
+    Node* rearNode;
+
+public:
+    Queue() {
+        frontNode = nullptr;
+        rearNode = nullptr;
+    }
+
+    bool isEmpty() {
+        return frontNode == nullptr;
+    }
+
+    void enqueue(int data) {
+        Node* newNode = new Node(data);
+        if (isEmpty()) {
+            frontNode = rearNode = newNode;
+        } else {
+            rearNode->next = newNode;
+            rearNode = newNode;
+        }
+    }
+
+    int dequeue() {
+        if (isEmpty()) {
+            cout << "Queue is Empty" << endl;
+            return -1;
+        }
+
+        Node* temp = frontNode;
+        int data = frontNode->data;
+        frontNode = frontNode->next;
+        delete temp;
+
+        return data;
+    }
+
+    int front() {
+        if (isEmpty()) {
+            cout << "Queue is Empty" << endl;
+            return -1;
+        }
+
+        return frontNode->data;
+    }
+};
