@@ -44,6 +44,29 @@ int getLength(Node* head) {
 
     return len;
 }
+
+
+
+void reverseDoublyLinkedList(Node* &head) {
+    Node* current = head;
+    Node* temp = nullptr;
+
+    while (current != nullptr) {
+        // Swap next and prev pointers
+        temp = current->prev;
+        current->prev = current->next;
+        current->next = temp;
+
+        // Move to the next node
+        current = current->prev;
+    }
+
+    // Update the head pointer to point to the last node (now the first node)
+    if (temp != nullptr) {
+        head = temp->prev;
+    }
+}
+
 void insertAtHead(Node* &tail, Node* &head, int d) {
 
     //empty list
